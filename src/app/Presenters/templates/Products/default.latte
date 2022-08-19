@@ -8,12 +8,14 @@
         <div class="card" style="...">
 
             <div class="card-body">
-                <p class="card-text">Nazov: <a class="nav-link">
-                   href="{link Product:detail $product->getUrl()}">{$product->getTitle()}</a></p>
+                <p class="card-text">Nazov: <a class="nav-link"
+                   href="{link Product:detail $product->getId()}">{$product->getTitle()}</a></p>
 
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"> cena: {$product->getPrice()} e</li>
+                <li class="list-group-item"> id: {$product->getId()} </li>
+                <li class="list-group-item"> url: {$product->getUrl()} </li>
+                <li class="list-group-item"> cena: {$product->getPrice()} €</li>
             </ul>
         </div>
         </a>
