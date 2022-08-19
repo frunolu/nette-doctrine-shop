@@ -53,3 +53,7 @@ doctrine.dbal:
 		user: %doctrine.user%
 		password: %doctrine.password%
 		dbname: %doctrine.dbname%
+
+security:
+    users:
+        admin: secret
