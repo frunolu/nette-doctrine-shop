@@ -1,5 +1,7 @@
 services:
 	- App\Router\RouterFactory::createRouter
+#	- App/Model/Authenticator
+
 	commands.foo:
 		class: App\Console\AddUserCommand
 		tags: [console.command: user:add]
