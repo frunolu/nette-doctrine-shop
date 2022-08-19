@@ -10,6 +10,7 @@
 
     <div>    {$article->getTitle()} </div>
         <div>{$article->getContent()} </div>
+        <div>{$article->getReleasedDate()|date:'F j, Y'} </div>
     <br>
             {/foreach}
 </table>
