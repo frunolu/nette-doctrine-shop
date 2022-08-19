@@ -11,3 +11,7 @@ services:
 	ProductRepository:
 		class: App\Model\Repository\ProductRepository
 		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\Product')
+
+	ArticleRepository:
+		class: App\Model\Repository\ArticleRepository
+		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\Article')

@@ -17,6 +17,7 @@ final class RouterFactory
     {
         $router = new RouteList;
         $router->addRoute('Produkty/', 'Products:default');
+        $router->addRoute('Clanky/', 'Article:default');
         $router->addRoute('<url>', 'Category:show');
         $router->addRoute('<presenter>/<url>', 'Product:detail');
         $router->addRoute('<presenter>/<action>[/<url>]', 'Homepage:default');

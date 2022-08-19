@@ -1,0 +1,15 @@
+{block content}
+{foreach $articles as $article}
+<table class="infoTable">
+    <tr>
+        <th width="200"></th>
+        <th width="200"></th>
+        <th width="200"></th>
+        <th width="200"> </th>
+    </tr>
+
+    <div>    {$article->getTitle()} </div>
+        <div>{$article->getContent()} </div>
+    <br>
+            {/foreach}
+</table>
