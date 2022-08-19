@@ -15,3 +15,7 @@ services:
 	ArticleRepository:
 		class: App\Model\Repository\ArticleRepository
 		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\Article')
+
+	RoleRepository:
+		class: App\Model\Repository\RoleRepository
+		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\Role')
