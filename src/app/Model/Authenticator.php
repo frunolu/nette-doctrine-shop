@@ -2,7 +2,7 @@
 declare(strict_types = 1);
 
 namespace App\Model;
-use App\Model\User\UserRepository;
+use App\Model\Repository\UserRepository;
 use Nette\Security\IIdentity;
 use Tracy\Debugger;
 
