@@ -3,3 +3,11 @@ services:
 	commands.foo:
 		class: App\Console\AddUserCommand
 		tags: [console.command: user:add]
+
+	CategoryRepository:
+		class: App\Model\Repository\CategoryRepository
+		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\Category')
+
+	ProductRepository:
+		class: App\Model\Repository\ProductRepository
+		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\Product')
