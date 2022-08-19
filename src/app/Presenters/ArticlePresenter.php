@@ -35,4 +35,11 @@ class ArticlePresenter extends Presenter
 
     }
 
+    public function actionAdd(): void
+    {
+        if (!$this->getUser()->isLoggedIn()) {
+            $this->flashMessage('Pro tuto akci je nutné se přihlásit.', 'error');
+            $this->redirect('Sign:in', $this->storeRequest());
+        }
+    }
 }
