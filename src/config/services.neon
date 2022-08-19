@@ -19,3 +19,6 @@ services:
 	RoleRepository:
 		class: App\Model\Repository\RoleRepository
 		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\Role')
+	UserXRoleRepository:
+		class: App\Model\Repository\UserXRoleRepository
+		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\UserXRole')
