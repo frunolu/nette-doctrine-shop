@@ -1,0 +1,71 @@
+{block content}
+</div>
+<div class="row">
+    {foreach $products as $product}
+    <div class="col-md-3">
+        <div class="card" style="...">
+
+            <div class="card-body">
+                <p class="card-text">Nazov: <a class="nav-link"
+                   href="{link Product:detail $product->getUrl()}">{$product->getTitle()}</a></p>
+
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"> id: {$product->getId()} </li>
+                <li class="list-group-item"> url: {$product->getUrl()} </li>
+                <li class="list-group-item"> cena: {$product->getPrice()} €</li>
+            </ul>
+        </div>
+        </a>
+    </div>
+
+    {/foreach}
+</div>
+<hr>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {if !$paginator->isFirst()}
+        <li class="page-item">
+            {else}
+        <li class="page-item disabled">
+        </li>
+        {/if}
+    </ul>
+
+</nav>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {if !$paginator->isFirst()}
+        <li class="page-item">
+            {else}
+        <li class="page-item disabled">
+            {/if}
+            <a class="page-link" n:href="default, $paginator->getPage() - 1" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {if $paginator->getPage() - 1 != 0}
+        <li class="page-item">
+            <a class="page-link" n:href="default, $paginator->getPage() - 1"> {$paginator->getPage() - 1}</a>
+        </li>
+        {/if}
+        <li class="page-item active">
+            <a class="page-link" n:href="default, $paginator->getPage()"> {$paginator->getPage()}</a>
+        </li>
+        {if $paginator->getPage() + 1 <= $paginator->getLastPage()}
+        <li class="page-item">
+            <a class="page-link" n:href="default, $paginator->getPage() + 1"> {$paginator->getPage() + 1}</a>
+        </li>
+        {/if}
+        {if !$paginator->isLast()}
+        <li class="page-item">
+            {else}
+        <li class="page-item disabled">
+            {/if}
+            <a class="page-link" n:href="default, $paginator->getPage() + 1" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
