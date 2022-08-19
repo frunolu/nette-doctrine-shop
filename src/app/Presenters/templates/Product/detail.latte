@@ -1,0 +1,41 @@
+{block content}
+<div>nazov: {$products->getTitle()}</div>
+<div class="container py-4 my-4 mx-auto d-flex flex-column">
+    <div class="header">
+        <div class="row r1">
+            <div class="col-md-9 abc">
+                <h1>title: {$products->getTitle()}</h1>
+            </div>
+            <div class="col-md-3 text-right pqr"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                        class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+        </div>
+        <p class="text-right para">Popis produktu:</p>
+    </div>
+    <div class="container-body mt-4">
+        <div class="row r3">
+            <div class="col-md-5 p-0 klo">
+                <ul>
+                    <div> product_id: {$products->getId()}</div>
+                    <div> code: {$products->getCode()}</div>
+                    <div> url: {$products->getUrl()}</div>
+                    <div>title: {$products->getTitle()}</div>
+                    <div>short description: {$products->getShortDescription()}</div>
+                    <div>price: {$products->getPrice()} €</div>
+                    <div>stock: {$products->getStock()} pcs</div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer d-flex flex-column mt-5">
+        <div class="row r4">
+            <div class="col-md-2 myt des"><a href="#">ADD TO CART</a></div>
+            <div class="col-md-2 myt "><a href="#">Review</a></div>
+            <div class="col-md-2 mio offset-md-4"><a href="#"></a></div>
+            <div class="col-md-2 myt ">
+                <button type="button" class="btn btn-outline-warning"><a href="#">BUY NOW</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="thumbnail">
+
