@@ -87,7 +87,7 @@ public ImageRepository $imageRepository;
                     $images[] = $image;
                 }
             }else{
-                $image = Image::fromFile(__DIR__ . '/../../www/empty.png');
+                $image = Image::fromFile(__DIR__ . '/../../www/images/empty.png');
                 $image->resize(304, 228, Image::EXACT);
                 $images[] = $image;
             }
