@@ -21,6 +21,15 @@ services:
 	RoleRepository:
 		class: App\Model\Repository\RoleRepository
 		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\Role')
+
 	UserXRoleRepository:
 		class: App\Model\Repository\UserXRoleRepository
 		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\UserXRole')
+
+	ImageRepository:
+		class: App\Model\Repository\ImageRepository
+		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\Image')
+
+	ImageTypeRepository:
+		class: App\Model\Repository\ImageTypeRepository
+		factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Entity\ImageType')
