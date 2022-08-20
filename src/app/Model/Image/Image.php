@@ -33,7 +33,7 @@ class Image
     /**
      * @var ImageType
      *
-     * @ORM\ManyToOne(targetEntity=imageType::class)
+     * @ORM\ManyToOne(targetEntity=ImageType::class)
      * @ORM\JoinColumn(referencedColumnName="id", name="imageType_id")
      */
     private $imageType;
@@ -71,17 +71,17 @@ class Image
     /**
      * @return Product
      */
-    public function getProperty(): Product
+    public function getProduct(): Product
     {
-        return $this->property;
+        return $this->product;
     }
 
     /**
-     * @param Product $property
+     * @param Product $product
      */
-    public function setProperty(Product $property): void
+    public function setProduct(Product $product): void
     {
-        $this->property = $property;
+        $this->product = $product;
     }
 
     /**
