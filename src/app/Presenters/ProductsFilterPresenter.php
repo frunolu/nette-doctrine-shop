@@ -8,11 +8,14 @@ use App\Model\Repository\ProductRepository;
 use JetBrains\PhpStorm\NoReturn;
 use Nette\Application\AbortException;
 use Nette\Forms\Form;
+use Nette\Utils\Image;
 use StdClass;
 use Tracy\Debugger;
 use Nette\Utils\Paginator;
 use App\Forms\ProductsFilterForm;
 use App\Forms\ProductForm;
+use App\Model\Repository\ImageRepository;
+use App\Model\Repository\ImageTypeRepository;
 use Nette\DI\Attributes\Inject;
 use Nette\Application\Attributes\Persistent;
 use Nette;
@@ -29,7 +32,10 @@ class ProductsFilterPresenter extends Nette\Application\UI\Presenter
      * @persistent
      */
     public $filterPriceTo;
-
+    /**
+     * @var ImageRepository  @inject
+     */
+public ImageRepository $imageRepository;
 
     /**
      * @var ProductRepository @inject
@@ -68,6 +74,25 @@ class ProductsFilterPresenter extends Nette\Application\UI\Presenter
             $item->price = number_format($product->getPrice(), 0, "", " ");
             $item->title = $product->getTitle();
             $item->url = $product->getUrl();
+
+            $images = [];
+            $nonPreparedImages = $this->imageRepository->findImagesBy(['product' => $item->id, 'imageType' => [1,2,4]]);
+
+            if(!empty($nonPreparedImages)){
+                foreach ($nonPreparedImages as $image) {
+                    $imagePath = $image->getFull();
+                    Debugger::barDump($imagePath);
+                    $image = Image::fromFile(__DIR__ . '/../../www' . $imagePath);
+                    $image->resize(304, 228, Image::EXACT);
+                    $images[] = $image;
+                }
+            }else{
+                $image = Image::fromFile(__DIR__ . '/../../www/empty.png');
+                $image->resize(304, 228, Image::EXACT);
+                $images[] = $image;
+            }
+
+            $item->images = $images;
 
         $this->template->items[] = $item;
         }
