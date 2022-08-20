@@ -1,39 +1,39 @@
 {block content}
-</div>
-<div class="row">
-    {foreach $products as $product}
-    <div class="col-md-3">
-        <div class="card" style="...">
-
-            <div class="card-body">
-                <p class="card-text">Nazov: <a class="nav-link"
-                   href="{link Product:detail $product->getUrl()}">{$product->getTitle()}</a></p>
-
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"> id: {$product->getId()} </li>
-                <li class="list-group-item"> url: {$product->getUrl()} </li>
-                <li class="list-group-item"> cena: {$product->getPrice()} €</li>
-            </ul>
-        </div>
-        </a>
+{form filterForm}
+    <div class="row">
+        <div class="col-md-2">{label priceFrom /}<br/>{input priceFrom}</div>
+        <div class="col-md-2">{label priceTo /}<br/>{input priceTo}</div>
     </div>
 
+    <div class="col-md-2">
+        <div class="pull-left"><label>&nbsp;</label><br/>{input submit} {input cancel}</div>
+    </div>
+    <hr>
+{/form}
+<div class="d-flex justify-content-between" style="margin-top: 30px;">
+    <h1 style="margin: 0;">Prehľad produktov:{$productsCount} vysledkov</h1>
+</div>
+
+
+<div class="row">
+    {foreach $items as $item}
+    <div class="col-md-3">
+        <a n:href="Product:detail $item->url" class="product-card">
+            <div class="card" style="margin-top: 20px">
+
+                <div class="card-body">
+                    <p class="card-text">id: {$item->id}</p>
+                    <p class="card-text">price: {$item->price}</p>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cena produktu: {$item->price} €</li>
+                </ul>
+            </div>
+        </a>
+    </div>
     {/foreach}
 </div>
-<hr>
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        {if !$paginator->isFirst()}
-        <li class="page-item">
-            {else}
-        <li class="page-item disabled">
-        </li>
-        {/if}
-    </ul>
-
-</nav>
-
 <nav aria-label="Page navigation example">
     <ul class="pagination">
         {if !$paginator->isFirst()}
@@ -69,3 +69,32 @@
         </li>
     </ul>
 </nav>
+
+<style>
+    .product-card {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+
+    .card-text {
+        color: black;
+        height: 96px;
+    }
+
+    .card-title {
+        height: 48px;
+    }
+</style>
+{/block}
+
+{block scripts}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    $('select').selectpicker();
+</script>
+{/block}
+{block links}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q==" crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+{/block}

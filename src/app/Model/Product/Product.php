@@ -48,7 +48,8 @@ class Product
     private $description;
 
     /**
-     * @ORM\Column(type="float")
+     * @var integer
+     * @ORM\Column(type="integer")
      */
     private $price;
 
