@@ -20,7 +20,15 @@
     <div class="col-md-3">
         <a n:href="Product:detail $item->url" class="product-card">
             <div class="card" style="margin-top: 20px">
-
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {foreach $item->images as $img}
+                        <div class="carousel-item {if $iterator->first}active{/if}">
+                            <img src="{$img|dataStream}" class="d-block w-100" alt="...">
+                        </div>
+                        {/foreach}
+                    </div>
+                </div>
                 <div class="card-body">
                     <p class="card-text">id: {$item->id}</p>
                     <p class="card-text">price: {$item->price}</p>
@@ -70,31 +78,36 @@
     </ul>
 </nav>
 
-<style>
-    .product-card {
-        margin: 0;
-        padding: 0;
-        text-decoration: none;
-    }
+    <style>
+        .product-card {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
 
-    .card-text {
-        color: black;
-        height: 96px;
-    }
+        .card-text {
+            color: black;
+            height: 96px;
+        }
 
-    .card-title {
-        height: 48px;
-    }
-</style>
+        .card-title {
+            height: 48px;
+        }
+    </style>
 {/block}
 
 {block scripts}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script type="text/javascript">
-    $('select').selectpicker();
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"
+            integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+        $('select').selectpicker();
+    </script>
 {/block}
 {block links}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q==" crossorigin="anonymous"
-      referrerpolicy="no-referrer" />
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css"
+      integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"/>
 {/block}
