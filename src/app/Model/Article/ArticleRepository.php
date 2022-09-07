@@ -18,11 +18,13 @@ class ArticleRepository extends EntityRepository
      * @var EntityManager
      */
     private $em;
+
     /**
      * ArticleRepository constructor.
      * @param EntityManager $entityManager
      */
-    public function __construct(EntityManager $entityManager) {
+    public function __construct(EntityManager $entityManager)
+    {
         parent::__construct($entityManager, new ClassMetadata(Article::class));
         $this->em = $entityManager;
     }
@@ -34,6 +36,7 @@ class ArticleRepository extends EntityRepository
         $qb->from('App\Model\Entity\Article', 'a');
         return $qb->getQuery()->getResult();
     }
+
     /**
      * Najde a vrátí článek podle jeho ID.
      * @param int|NULL ID článku
@@ -41,7 +44,7 @@ class ArticleRepository extends EntityRepository
      */
     public function getArticle($id)
     {
-        return isset($id) ? $this->em->find(Article::class, $id) : NULL;
+        return isset($id) ? $this->em->find(Article::class, $id) : null;
     }
 
 }

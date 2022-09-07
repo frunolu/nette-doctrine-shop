@@ -43,9 +43,9 @@ class ProductForm
      */
     public function cancel(): void
     {
-        if($this->product){
+        if ($this->product) {
             $this->presenter->redirect('default', $this->product->getId());
-        }else{
+        } else {
             $this->presenter->redirect('default');
         }
     }

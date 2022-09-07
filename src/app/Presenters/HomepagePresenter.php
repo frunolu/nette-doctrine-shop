@@ -15,7 +15,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
      */
     public CategoryRepository $categoryRepository;
 
-    public function renderDefault():void
+    public function renderDefault(): void
     {
         $this->template->categories = $this->categoryRepository->findAll();
     }

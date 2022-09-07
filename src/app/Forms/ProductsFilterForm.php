@@ -22,8 +22,7 @@ class ProductsFilterForm
         $presenter,
         $priceFrom,
         $priceTo
-    )
-    {
+    ) {
 
         $this->presenter = $presenter;
         $this->priceFrom = $priceFrom;

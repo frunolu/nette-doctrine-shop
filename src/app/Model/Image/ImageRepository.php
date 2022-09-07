@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace App\Model\Repository;
 
@@ -13,7 +13,8 @@ use Doctrine\ORM\OptimisticLockException;
 use Exception;
 
 
-final class ImageRepository extends EntityRepository {
+final class ImageRepository extends EntityRepository
+{
 
     /**
      * @var EntityManager
@@ -24,7 +25,8 @@ final class ImageRepository extends EntityRepository {
      * ImageRepository constructor.
      * @param EntityManager $entityManager
      */
-    public function __construct(EntityManager $entityManager) {
+    public function __construct(EntityManager $entityManager)
+    {
         parent::__construct($entityManager, new ClassMetadata(Image::class));
 
         $this->em = $entityManager;
@@ -37,11 +39,11 @@ final class ImageRepository extends EntityRepository {
      * @throws OptimisticLockException
      * @throws \Doctrine\ORM\TransactionRequiredException
      */
-    public function findImage(int $id) : ?Image
+    public function findImage(int $id): ?Image
     {
         $image = $this->em->find(Image::class, $id);
 
-        if($image instanceof Image) {
+        if ($image instanceof Image) {
             return $image;
         }
         return null;
@@ -55,8 +57,12 @@ final class ImageRepository extends EntityRepository {
      * @param int|null $offset
      * @return Image[]
      */
-    public function findImagesBy(array $criteria = array(), array $order = array(), int $limit = NULL, int $offset = NULL): array
-    {
+    public function findImagesBy(
+        array $criteria = array(),
+        array $order = array(),
+        int $limit = null,
+        int $offset = null
+    ): array {
         return $this->findBy($criteria, $order, $limit, $offset);
     }
 
@@ -68,8 +74,12 @@ final class ImageRepository extends EntityRepository {
      * @param int|null $offset
      * @return Image
      */
-    public function findImageBy(array $criteria = array(), array $order = array(), int $limit = NULL, int $offset = NULL): Image
-    {
+    public function findImageBy(
+        array $criteria = array(),
+        array $order = array(),
+        int $limit = null,
+        int $offset = null
+    ): Image {
         return $this->findOneBy($criteria, $order, $limit, $offset);
     }
 
@@ -91,7 +101,8 @@ final class ImageRepository extends EntityRepository {
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function createImage(Product $product, ImageType $imageType, $full, $thumb) : Image {
+    public function createImage(Product $product, ImageType $imageType, $full, $thumb): Image
+    {
         $entity = new Image();
         $entity->setProperty($product);
         $entity->setImageType($imageType);
@@ -108,7 +119,8 @@ final class ImageRepository extends EntityRepository {
      * @param Image $image
      * @throws Exception
      */
-    public function removeImage(Image $image) : void {
+    public function removeImage(Image $image): void
+    {
         $this->em->remove($image);
         $this->em->flush();
     }

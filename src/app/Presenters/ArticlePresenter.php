@@ -28,7 +28,7 @@ class ArticlePresenter extends Presenter
     }
 
 
-    public function renderdefault():void
+    public function renderdefault(): void
     {
         $articles = $this->articleRepository->findAll();
         $this->template->articles = $articles;

@@ -35,7 +35,7 @@ class ProductsFilterPresenter extends Nette\Application\UI\Presenter
     /**
      * @var ImageRepository  @inject
      */
-public ImageRepository $imageRepository;
+    public ImageRepository $imageRepository;
 
     /**
      * @var ProductRepository @inject
@@ -76,9 +76,12 @@ public ImageRepository $imageRepository;
             $item->url = $product->getUrl();
 
             $images = [];
-            $nonPreparedImages = $this->imageRepository->findImagesBy(['product' => $item->id, 'imageType' => [1,2,4]]);
+            $nonPreparedImages = $this->imageRepository->findImagesBy([
+                'product' => $item->id,
+                'imageType' => [1, 2, 4]
+            ]);
 
-            if(!empty($nonPreparedImages)){
+            if (!empty($nonPreparedImages)) {
                 foreach ($nonPreparedImages as $image) {
                     $imagePath = $image->getFull();
                     Debugger::barDump($imagePath);
@@ -86,7 +89,7 @@ public ImageRepository $imageRepository;
                     $image->resize(304, 228, Image::EXACT);
                     $images[] = $image;
                 }
-            }else{
+            } else {
                 $image = Image::fromFile(__DIR__ . '/../../www/images/empty.png');
                 $image->resize(304, 228, Image::EXACT);
                 $images[] = $image;
@@ -94,7 +97,7 @@ public ImageRepository $imageRepository;
 
             $item->images = $images;
 
-        $this->template->items[] = $item;
+            $this->template->items[] = $item;
         }
         $this->template->paginator = $paginator;
     }
@@ -143,7 +146,7 @@ public ImageRepository $imageRepository;
     /**
      * @throws AbortException
      */
-public function cancelFilter(): void
+    public function cancelFilter(): void
     {
         $this->filterPriceFrom = null;
         $this->filterPriceTo = null;
