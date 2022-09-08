@@ -1,4 +1,4 @@
-FROM php:7.4.27-fpm
+FROM php:8.1.10-fpm
 
 ARG APP_WORK_DIR=/application
 ARG COMPOSER_VERSION=2.3.10
